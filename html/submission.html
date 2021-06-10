@@ -1,0 +1,34 @@
+<dl>
+    <dt>Event</dt>
+    <dd>{{event}}</dd>
+
+    <dt>Submission Title</dt>
+    <dd>{{title}}</dd>
+
+    <dt class="{{authors_hidden}}">Submission Date</dt>
+    <dd class="{{authors_hidden}}">{{date}}</dd>
+
+    <dt class="{{authors_hidden}}">Author(s)</dt>
+    <dd class="{{authors_hidden}}">{{authors}}</dd>
+
+    <dt class="{{abstract_hidden}}">Abstract</dt>
+    <dd class="{{abstract_hidden}}">{{abstract}}</dd>
+
+    <dt>Keywords</dt>
+    <dd>{{keywords}}</dd>
+
+    <dt class="{{action_letter_hidden}}">Action Letter</dt>
+    <dd class="{{action_letter_hidden}}">{{action_letter}}</dd>
+
+    <dt class="{{pdf_hidden}}">PDF</dt>
+    <dd class="{{pdf_hidden}}"><a href="{{link}}/{{pdf}}" target="_blank">{{pdfname}}</a></dd>
+
+    <dt class="{{authors_hidden}}">Current Status</dt>
+    <dd class="{{authors_hidden}}">{{status}}</dd>
+</dl>
+<p class="alert alert-warning {{revised_by_hidden}}">
+    This submission is outdated as there exists a <a href="{{link}}/submission?id={{revised_by}}">newer revision</a>.
+</p>
+<p class="alert alert-info {{revision_from_hidden}}">
+    This submission is a revision of <a href="{{link}}/submission?id={{revision_from}}">this submission</a>.
+</p>

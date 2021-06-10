@@ -1,0 +1,225 @@
+<p class="alert alert-success {{success_hidden}}" role="alert">
+    {{success}}
+</p>
+<p class="alert alert-danger mb-2 {{message_hidden}}" role="alert">
+    {{message}}
+</p>
+<form method="post">
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Link</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <input type="text" class="form-control mb-1" value="{{link}}" readonly>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Title</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <input type="text" class="form-control mb-1" name="title" value="{{title}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Description (HTML is allowed)</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <textarea class="form-control mb-1" name="description">{{description}}</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Link to Call for Papers (CfP)</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <input type="text" class="form-control mb-1" name="cfp_pdf" value="{{cfp_pdf}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Deadline for Submissions</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <input type="datetime-local" class="form-control mb-1" name="cfp_deadline" value="{{cfp_deadline}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Deadline for Reviews</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <input type="datetime-local" class="form-control mb-1" name="review_deadline" value="{{review_deadline}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Settings</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <label class="form-check-label d-block">
+                <input type="checkbox" name="requires_abstract" value="1" {{requires_abstract_checked}}>
+                Submission requires 150-word abstract
+            </label>
+            <label class="form-check-label d-block">
+                <input type="checkbox" name="requires_pdf" value="1" {{requires_pdf_checked}}>
+                Submission requires PDF upload
+            </label>
+            <label class="form-check-label d-block">
+                <input type="checkbox" name="make_submitters_reviewers" value="1" {{make_submitters_reviewers_checked}}>
+                Submission authors are automatically added as reviewers
+            </label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12"></div>
+        <div class="col-md-9 col-sm-12">
+            <input type="submit" class="form-control btn btn-primary col-6" value="Save">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Organizers</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-borderless">
+                    <tbody>
+                    {{organizers}}
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modal_addorganizer">
+                Add new organizer
+            </button>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-12">
+            <label class="col-form-label d-block mb-1">Reviewers</label>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-borderless">
+                    <tbody>
+                    {{reviewers}}
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modal_addreviewer">
+                Add new reviewer
+            </button>
+        </div>
+    </div>
+</form>
+<div id="modal_addorganizer" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_addorganizer_title" aria-hidden="true">
+    <div class="modal-lg modal-dialog">
+        <form class="modal-content" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_addorganizer_title">Add Organizer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group author">
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block mb-1">Salutation</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <select class="form-control mb-1" name="salutation">
+                                {{salutation_options}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block mb-1">Given name</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" class="form-control mb-1" name="firstname">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block mb-1">Family name</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" class="form-control mb-1" name="lastname">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block">Email address</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="email" class="form-control mb-1" name="email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="type" value="organizer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn btn-primary" value="Add organizer">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal_addreviewer" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_addreviewer_title" aria-hidden="true">
+    <div class="modal-lg modal-dialog">
+        <form class="modal-content" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_addreviewer_title">Add Reviewer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group author">
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block mb-1">Salutation</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <select class="form-control mb-1" name="salutation">
+                                {{salutation_options}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block mb-1">Given name</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" class="form-control mb-1" name="firstname">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block mb-1">Family name</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" class="form-control mb-1" name="lastname">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12">
+                            <label class="col-form-label d-block">Email address</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="email" class="form-control mb-1" name="email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="type" value="reviewer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn btn-primary" value="Add reviewer">
+            </div>
+        </form>
+    </div>
+</div>

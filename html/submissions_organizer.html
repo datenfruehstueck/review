@@ -1,0 +1,146 @@
+<div class="{{submissions_hidden}}">
+    <div class="table-responsive">
+        <table class="table table-striped table-borderless">
+            <thead>
+            <tr>
+                <th>Author(s)</th>
+                <th>Title</th>
+                <th>Submitted</th>
+                <th>Editor</th>
+                <th>Status</th>
+                <th>Reviews</th>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            {{table_submissions}}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a class="btn btn-outline-primary" href="#" data-toggle="modal" data-target="#modal_assignmultiplereviews">Assign multiple reviews</a>
+    </div>
+</div>
+<div class="{{archive_hidden}}">
+    <h2 class="border-top border-dark py-1 mt-5 mb-4 text-uppercase" style="border-top-width: .3rem !important; font-weight: 500;">Archive</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-borderless">
+            <thead>
+            <tr>
+                <th>Author(s)</th>
+                <th>Title</th>
+                <th>Editor</th>
+                <th>Decided</th>
+                <th>Decision</th>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            {{table_archive}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="modal_assignreview" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_assignreview_title" aria-hidden="true">
+    <div class="modal-lg modal-dialog">
+        <form class="modal-content" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_assignreview_title">Assign Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="alert alert-info">
+                    <strong>Keywords:</strong> <span class="submission_keywords"></span>
+                    <input type="hidden" name="submission" value="">
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-striped table-borderless">
+                        <thead>
+                        <tr>
+                            <td></td>
+                            <th>Reviewer</th>
+                            <th>Keywords</th>
+                            <th>Reviews</th>
+                        </tr>
+                        </thead>
+                        <tbody class="reviewers">
+                        {{table_reviewers}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn btn-primary" value="Assign">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal_assignmultiplereviews" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_assignmultiplereviews_title" aria-hidden="true">
+    <div class="modal-lg modal-dialog">
+        <form class="modal-content" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_assignmultiplereviews_title">Assign Multiple Reviews</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-borderless">
+                        <thead>
+                        <tr>
+                            <th>Submission</th>
+                            <th>Reviewer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{table_multipleassignment}}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="autoselect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Auto-Select ...
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="autoselect">
+                                        <a class="dropdown-item autoselect" href="#" data-order="random">randomly</a>
+                                        <a class="dropdown-item autoselect" href="#" data-order="keywords">by keyword matches</a>
+                                        <a class="dropdown-item autoselect" href="#" data-order="reviews">by number of reviews</a>
+                                        <div class="dropdown-divider"></div>
+                                        {{multiassign_organizers}}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn btn-primary" value="Assign all">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal_decisionletter" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_decisionletter_title" aria-hidden="true">
+    <div class="modal-lg modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_decisionletter_title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <p class="modal-body"></p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

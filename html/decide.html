@@ -1,0 +1,68 @@
+<div class="mb-4">
+    <form method="post">
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-12">
+                <label class="col-form-label d-block mb-1">Decision</label>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <select class="form-control mb-1" name="decision">
+                    <option value="" class="text-light" selected>-- make your decision --</option>
+                    {{decision_options}}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-12">
+                <label class="col-form-label d-block mb-1">Decision Letter</label>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <textarea class="form-control mb-1" name="decision_letter" rows="10" data-dirty="0" data-salutation="{{decision_salutation}}" data-greeting="{{decision_greeting}}" placeholder="Make a decision first to load the respective template here."></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-12"></div>
+            <div class="col-md-9 col-sm-12">
+                <input type="submit" class="form-control btn btn-primary col-6" value="Submit decision">
+            </div>
+        </div>
+    </form>
+</div>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="nav_submission" data-toggle="tab" href="#tab_submission" role="tab" aria-controls="tab_submission" aria-selected="true">Submission</a>
+    </li>
+    {{nav_reviews}}
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tab_submission" role="tabpanel" aria-labelledby="nav_submission">
+        <dl>
+            <dt>Event</dt>
+            <dd>{{event}}</dd>
+
+            <dt>Submission Title</dt>
+            <dd id="submission_title">{{title}}</dd>
+
+            <dt>Submission Date</dt>
+            <dd>{{date}}</dd>
+
+            <dt>Author(s)</dt>
+            <dd>{{authors}}</dd>
+
+            <dt class="{{abstract_hidden}}">Abstract</dt>
+            <dd class="{{abstract_hidden}}">{{abstract}}</dd>
+
+            <dt>Keywords</dt>
+            <dd>{{keywords}}</dd>
+
+            <dt class="{{pdf_hidden}}">PDF</dt>
+            <dd class="{{pdf_hidden}}"><a href="{{link}}/{{pdf}}" target="_blank">{{pdfname}}</a></dd>
+        </dl>
+        <p class="alert alert-warning {{revised_by_hidden}}">
+            This submission is outdated as there exists a <a href="{{link}}/submission/decide?id={{revised_by}}">newer revision</a>.
+        </p>
+        <p class="alert alert-info {{revision_from_hidden}}">
+            This submission is a revision of <a href="{{link}}/submission/decide?id={{revision_from}}">this submission</a>.
+        </p>
+    </div>
+    {{tab_reviews}}
+</div>

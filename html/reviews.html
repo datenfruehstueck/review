@@ -1,0 +1,63 @@
+<p class="alert alert-danger mb-2 {{message_hidden}}" role="alert">
+    {{message}}
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-borderless">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Editor</th>
+            <th>Status</th>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        {{table_reviews}}
+        </tbody>
+    </table>
+</div>
+<div id="modal_review" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_review_title" aria-hidden="true">
+    <div class="modal-lg modal-dialog">
+        <form class="modal-content" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_review_title">Enter Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-3 col-sm-12">
+                        <label class="col-form-label d-block">Comments to the authors</label>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <textarea class="form-control" name="text_to_authors" rows="8">{{text_to_authors_prefill}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3 col-sm-12">
+                        <label class="col-form-label d-block">Your suggestion</label>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <select name="suggestion" class="form-control">
+                            {{suggestion_options}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3 col-sm-12">
+                        <label class="col-form-label d-block">Additional comments to the organizers (not visible to the authors)</label>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <textarea class="form-control" name="text_to_organizers" rows="3"></textarea>
+                    </div>
+                </div>
+                <input type="hidden" name="review">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn btn-primary" value="Submit review">
+            </div>
+        </form>
+    </div>
+</div>
