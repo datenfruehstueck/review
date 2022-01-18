@@ -71,6 +71,10 @@ class Person extends AbstractModel {
     }
 	
 	function send_mail($subject, $message, $add_salutation = TRUE) {
+		if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+			return FALSE;
+		}
+		
         $this->mailer->clearAllRecipients();
         $this->mailer->addAddress($this->email);
         //$subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
