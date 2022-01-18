@@ -304,6 +304,9 @@ class System {
         if(count($existingPersons) > 0) {
             return $existingPersons[0];
         } else {
+			if(strlen($firstname) > 50 || strlen($lastname) > 50 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				return NULL;
+			}
             $person = $personHandler->add(new Person($this->db, $this->config, [
                 'email' => $email,
                 'salutation' => $salutation,
